@@ -14,19 +14,74 @@ Release Notes (Latest)
 
      * Make sure to check the :doc:`Migration Guide <migration-guide>` for tips on how to upgrade glu.
 
-.. _glu-5.5.4:
+.. _glu-5.6.1:
 
-5.5.4 (2015/01/20)
+5.6.1 (2015/06/02)
 ------------------
 
 .. sidebar:: Download
 
-  .. image:: https://api.bintray.com/packages/pongasoft/binaries/glu/images/download.png?version=5.5.4
+  .. image:: https://api.bintray.com/packages/pongasoft/binaries/glu/images/download.png?version=5.6.1
      :alt: Download the latest version of glu
      :class: sidebar-logo
-     :target: https://bintray.com/pongasoft/glu/releases/5.5.4
+     :target: https://bintray.com/pongasoft/glu/releases/5.6.1
 
   Download glu latest release from Bintray.
+
+This release contains a couple of bug fixes.
+
+List of tickets:
+
+* Fixed `glu-299 <https://github.com/pongasoft/glu/issues/299>`_: `DbCurrentSystem access not synchronized properly`
+* Fixed `glu-297 <https://github.com/pongasoft/glu/issues/297>`_: `Exception when no credential provided at login`
+
+.. _glu-5.6.0:
+
+5.6.0 (2015/05/06)
+------------------
+
+This release contains no new features or bug fixes. The only change is that this is the first version of glu that is compatible with java 1.8 (and still works with java 1.7).
+
+.. warning:: In order to make glu compatible with java 1.8, most direct dependencies have been upgraded to their most recent versions (and transitively). Although all tests pass and longevity tests are not showing any difference in memory usage and speed, I would strongly advise to use caution when upgrading to this version. Check the :ref:`migration steps <migration-guide-5.5.6-5.6.0>` for more details.
+
+List of tickets:
+
+* Implemented `glu-295 <https://github.com/pongasoft/glu/issues/295>`_: `Make glu work with java 8`
+
+.. _glu-5.5.6:
+
+5.5.6 (2015/04/30)
+------------------
+
+This release includes the following:
+
+* Explicitly track the user who changes the static model (and when it is changed). This information was already available in the Audit Log, but it is now part of the data recorded directly in the domain object ``DbSystemModel`` and ``DbCurrentSystem``. This data is now displayed in the UI as well as returned in REST calls (as HTTP headers). Note that past data is *not* populated and will remain blank. Make sure to check the :ref:`Migration Guide <migration-guide-5.5.5-5.5.6>` for some details on impact.
+* Tidy up some UI elements based on SkyHigh Networks feedback (part I).
+
+List of tickets:
+
+* Implemented `glu-287 <https://github.com/pongasoft/glu/issues/287>`_: `Tidy up UI (Part I)`
+* Implemented `glu-286 <https://github.com/pongasoft/glu/issues/286>`_: `Record who changed the model`
+
+.. _glu-5.5.5:
+
+5.5.5 (2015/03/20)
+------------------
+
+This release includes a couple of bug fixes.
+
+* Issue ``glu-279`` relates to the agent and is required only if you use parent/child relationships in your script (and you have been experiencing this issue).
+* Issue ``glu-280`` relates to the console and is only required if you use the console in HTTPS mode behind a proxy (and have been experiencing this issue).
+
+List of tickets:
+
+* Implemented `glu-279 <https://github.com/pongasoft/glu/issues/279>`_: `call delegation not working in glu script`
+* Implemented `glu-280 <https://github.com/pongasoft/glu/issues/280>`_: `/console/js/bootstrap.min.js redirects bypasses serverURL`
+
+.. _glu-5.5.4:
+
+5.5.4 (2015/01/20)
+------------------
 
 This release disables the sslv3 protocol entirely in the agent to fix the issue related to `POODLE <http://en.wikipedia.org/wiki/POODLE>`_. Note that there is no other change in this release, so if you do not worry about the POODLE issue because for example your agents are not accessible outside your own network, or you are not even running the agents in secure mode (http vs https), then you can skip this release.
 
